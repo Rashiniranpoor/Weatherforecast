@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: 'postgres:15'
+    container_name: 'postgres1'
+    environment:
+      POSTGRES_USER: forecast
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: forecastdb
+    volumes:
+      - ./data/pgdata:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    restart: always
