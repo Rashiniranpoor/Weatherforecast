@@ -1,5 +1,6 @@
 
 import './App.css'
+import ForecastReportManagement from './components/ForecastReportManagement'
 import Navbar from './components/Navbar'
 import WeatherForecast from './components/WeatherForecast'
 
@@ -9,6 +10,7 @@ function App() {
     <>
        <Navbar />
        <WeatherForecast />
+       <ForecastReportManagement />
     </>
   )
 }

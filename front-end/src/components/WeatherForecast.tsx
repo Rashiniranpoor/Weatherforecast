@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { FormEvent, useEffect, useRef, useState } from 'react'
 import {  WeatherData } from '../types/weather';
 
 function WeatherForecast() {
@@ -1542,11 +1542,8 @@ function WeatherForecast() {
 
     const [weatherInfo, setWeatherInfo] = useState<WeatherData | null>(null);
  
-    useEffect(()=>{
-        //mapDataoObject();
-    },[])
     
-    function fetchData(event: React.FormEvent<HTMLFormElement>){
+    function fetchData(event: FormEvent<HTMLFormElement>){
         try {
             event.preventDefault();
             const cityName = cityRef.current.value;
@@ -1570,11 +1567,11 @@ function WeatherForecast() {
         }
     }
 
-    function handleSubmit(event: React.FormEvent<HTMLFormElement>){
+    function handleSubmit(event: FormEvent<HTMLFormElement>){
         event.preventDefault();
     }
 
-    function handleSave(event: React.FormEvent<HTMLFormElement>){
+    function handleSave(event: FormEvent<HTMLFormElement>){
         event.preventDefault();
         const apiUrl = 'http://localhost:8080/api/report/add';
         const reportData = {

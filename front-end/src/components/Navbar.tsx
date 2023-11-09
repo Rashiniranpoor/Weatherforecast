@@ -9,7 +9,7 @@ function Navbar() {
     
   return (
     <>
-         <nav className='flex items-center flex-wrap bg-green-400 p-3 '>
+      <nav className='flex items-center flex-wrap bg-blue-500 p-3 '>
         <p >
           <a className='inline-flex items-center p-2 mr-4 '>
             <svg
