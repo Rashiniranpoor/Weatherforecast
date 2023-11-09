@@ -36,6 +36,15 @@ public class ReportController {
         return ResponseEntity.ok().body(ReportConvertor.toResponseListDTO(reports));
     }
 
+    @GetMapping( path="/all")
+    public ResponseEntity<List<ReportDto>> getAllReports() {
+        List<Report> reports = service.findAll();
+        if (reports == null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "report not found!");
+        }
+        return ResponseEntity.ok().body(ReportConvertor.toResponseListDTO(reports));
+    }
+
     @GetMapping( path="/")
     public ResponseEntity<List<CityInfoDTO>> getAllReportsOfCities() {
         List<CityInfoDTO> cities = service.findAllReportsofCities();

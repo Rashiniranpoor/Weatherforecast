@@ -11,6 +11,7 @@ function ForecastReportManagement() {
   
     useEffect(() => {
         fetchCities();
+        fetchAllReports();
       }, []);
     
     function fetchCities(){
@@ -32,6 +33,24 @@ function ForecastReportManagement() {
             // Handle any errors that occur during the request
         });
     }
+
+      function fetchAllReports(){
+        const apiUrl = `http://localhost:8080/api/report/all`; 
+        fetch(apiUrl)
+        .then((response) => {
+            if (response.ok) {
+              return response.json();
+            } else {
+              throw new Error(`Failed to add report. Status: ${response.status}`);
+            }
+          })
+          .then((data: ForecastReport[]) => { 
+            setReports(data)
+          })
+          .catch((error) => {
+            // Handle any errors that occur during the request
+        });
+      }
 
     function fetchDataByCityId(cityId:string){
         const apiUrl = `http://localhost:8080/api/report/${cityId}`;
@@ -59,6 +78,9 @@ function ForecastReportManagement() {
       if (selectedValue) {
         if(selectedValue!="..."){
           fetchDataByCityId(selectedValue);
+        }
+        else{
+          fetchAllReports();
         }
       }
     };
@@ -118,7 +140,7 @@ function ForecastReportManagement() {
       <select
           className="flex-1 bg-slate-100 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
           onChange={handleCityChange} value={selectedCity || ""}>
-        <option key="0" value="..."></option>
+        <option key="0" value="...">All</option>
         {cities.map((city) => ( 
           <option key={city.cityId} value={city.cityId}>
             {city.cityName}

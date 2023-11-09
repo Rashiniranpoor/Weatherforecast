@@ -26,6 +26,8 @@ public class ReportService {
         return repo.findReportsByCityId(cityId);
     }
 
+    public List<Report> findAll(){return  repo.findAll();}
+
     public List<CityInfoDTO> findAllReportsofCities(){
         return repo.findDistinctCityIdBy();
     }
