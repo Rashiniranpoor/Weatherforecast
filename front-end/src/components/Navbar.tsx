@@ -9,13 +9,15 @@ const navigate = useNavigate();
     }
     
   return (
-    <>
+    <div className='my-5'>
       <nav className='flex items-center flex-wrap bg-blue-500 p-2 '>
         <p >
-          <img className='h-12 w-12' src="../src/assets/logo1.png" />
+        <Link to='/' >
+        <img className='h-12 w-12' src="../src/assets/logo1.png" />
+          </Link>
         </p>
         <button
-          className=' inline-flex p-3 hover:bg-green-600 rounded lg:hidden text-white ml-auto hover:text-white outline-none'
+          className=' inline-flex p-3 hover:bg-blue-700 rounded lg:hidden text-white ml-auto hover:text-white outline-none'
           onClick={handleClick}
         >
           <svg
@@ -41,29 +43,29 @@ const navigate = useNavigate();
         >
           <div className='lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start  flex flex-col lg:h-auto'>
             <p >
-              <Link to='/' className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-green-600 hover:text-white '>
+              <Link to='/' className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-blue-700 hover:text-white '>
                 Home
               </Link>
             </p>
             <p >
-              <Link to='reports' onClick={()=>{navigate("contactus")}} className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-green-600 hover:text-white'>
+              <Link to='reports' onClick={()=>{navigate("contactus")}} className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-blue-700 hover:text-white'>
                 Reports
               </Link>
             </p>
             <p>
-              <Link to='aboutus' className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-green-600 hover:text-white'>
+              <Link to='aboutus' className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-blue-700 hover:text-white'>
                 About us
               </Link>
             </p>
             <p>
-              <Link to='contactus' className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-green-600 hover:text-white'>
+              <Link to='contactus' className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-blue-700 hover:text-white'>
                 Contact us
               </Link>
             </p>
           </div>
         </div>
       </nav>
-    </>
+    </div>
   )
 }
 

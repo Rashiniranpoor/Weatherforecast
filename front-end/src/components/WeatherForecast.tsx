@@ -1546,37 +1546,28 @@ function WeatherForecast() {
     async function fetchData(event: FormEvent<HTMLFormElement>){
         try {
             event.preventDefault();
-
-            /* const cityName = cityRef.current.value;
-            const url ="api.openweathermap.org/data/2.5/forecast?q="+cityName+"&appid=4269549567f33d38fae72c460bfcb1b4&units=imperial"
+             const cityName = cityRef.current.value;
+            const url ="https://api.openweathermap.org/data/2.5/forecast?q="+cityName+"&appid=4269549567f33d38fae72c460bfcb1b4&units=imperial"
             
          fetch(url)
             .then(response =>{  
-                return response;
-            }).then(result=>console.log(result))
-
+                return response.json();
+            }).then((res :WeatherData) => {
+                setWeatherInfo(res); 
+            })
             
-            .then((res :WeatherData) => {
-                setWeatherInfo(res);
-                console.log(weatherInfo);
-            })  
-             /
-
-            const response = await fetch(url);
-
-  if (!response.ok) {
-    throw new Error(`Error: ${response.status} - ${response.statusText}`);
-  }
-
-  const contentType = response.headers.get("content-type");
-  if (!contentType || !contentType.includes("application/json")) {
-    throw new Error("Response is not in JSON format");
-  }
-
-  const data = await response.json();
-
-            */
-            const data: WeatherData = jsonData; 
+            /*
+            .then(response =>{  
+                console.log(response);
+                var data=response.body?.getReader().read();
+                return data;
+            })
+            .then(data =>{
+                var string = new TextDecoder().decode(data?.value);
+                console.log(string);
+            })
+              */
+            /*const data: WeatherData = jsonData; 
           
             if (data.list.length != null) { 
                 setWeatherInfo(data);  
@@ -1586,7 +1577,7 @@ function WeatherForecast() {
                   <p className="mt-2 invisible peer-invalid:visible text-pink-600 text-sm">
                      No data available in the "list" array.
                   </p> )
-            }
+            }*/
         } catch (error) {
             console.error('Error parsing JSON data:', error);
         }
@@ -1640,7 +1631,7 @@ function WeatherForecast() {
             <form onSubmit={fetchData}> 
                 <div className="flex items-start mb-2 my-2">
                     <input ref={cityRef} 
-                        className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 m-5" 
+                        className="block w-full border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 m-5" 
                         placeholder='City...'></input>
                     </div>
                     <button 
@@ -1670,15 +1661,16 @@ function WeatherForecast() {
                         </p>
                         {weatherInfo?.city.name}
                     </p>
-                    <input id="report" multiple
-                        className="block m-5 h-100 rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm " 
-                        placeholder='Write your report...'></input>
-                
+                    <div className="flex items-start mb-2 my-2">
+                    <textarea id="report" 
+                        className="block w-full border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 m-5" 
+                        placeholder='Write your report...' />
+                </div>
                 </form>
                 <form onSubmit={handleSave}>
                 <button 
-                        className="m-5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-20 sm:w-2  py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                        >Save</button>
+                    className="m-5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-20 sm:w-2  py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    >Save</button>
             </form>
             
         </div>
