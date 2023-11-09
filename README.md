@@ -12,8 +12,8 @@ Welcome to the Weather Reporter App! This application allows users to fetch weat
 
 - **Discord Integration:** Share your weather reports directly on Discord, keeping your community informed about the current weather conditions.
 
-![App Logo](https://github.com/Rashiniranpoor/Weatherforcast/blob/main/Screenshot%202023-11-09%20at%2022.31.12.png)
-![App Logo](https://github.com/Rashiniranpoor/Weatherforcast/blob/main/Screenshot%202023-11-09%20at%2022.32.47.png)
+![App Logo](https://github.com/Rashiniranpoor/Weatherforcast/blob/main/app1.png)
+![App Logo](https://github.com/Rashiniranpoor/Weatherforcast/blob/main/app2.png)
 
 ## Getting Started
 
