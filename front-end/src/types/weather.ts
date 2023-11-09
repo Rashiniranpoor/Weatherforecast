@@ -1,4 +1,3 @@
- 
 
 export type WeatherData = {
     cod: string;

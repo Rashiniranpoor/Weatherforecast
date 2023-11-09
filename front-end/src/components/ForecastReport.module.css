@@ -1,0 +1,32 @@
+.div_dropdown{ 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-self: center;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
+.table{
+    display: flex;
+    flex-direction: row;
+}
+
+.delete{
+    width: 30px;
+    height: 30px;
+    background-image: url('../assets/delete.png');
+    background-size: contain;
+    margin: auto;
+}
+
+.discord{
+    width: 30px;
+    height: 30px;
+    margin: auto;
+    background-image: url('../assets/discord-icon-512x512-xtx725no.png');
+    background-size: contain;
+}

@@ -1543,16 +1543,41 @@ function WeatherForecast() {
     const [weatherInfo, setWeatherInfo] = useState<WeatherData | null>(null);
  
     
-    function fetchData(event: FormEvent<HTMLFormElement>){
+    async function fetchData(event: FormEvent<HTMLFormElement>){
         try {
             event.preventDefault();
-            const cityName = cityRef.current.value;
-            const data: WeatherData = jsonData; 
-            /* fetch("api.openweathermap.org/data/2.5/forecast?q="+{cityName}+"&appid=4269549567f33d38fae72c460bfcb1b4&units=imperial")
-            .then(response =>  response.json())
-            .then((res :[WeatherData]) => setWeatherInfo(res[0]))
-            */
+
+            /* const cityName = cityRef.current.value;
+            const url ="api.openweathermap.org/data/2.5/forecast?q="+cityName+"&appid=4269549567f33d38fae72c460bfcb1b4&units=imperial"
             
+         fetch(url)
+            .then(response =>{  
+                return response;
+            }).then(result=>console.log(result))
+
+            
+            .then((res :WeatherData) => {
+                setWeatherInfo(res);
+                console.log(weatherInfo);
+            })  
+             /
+
+            const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error(`Error: ${response.status} - ${response.statusText}`);
+  }
+
+  const contentType = response.headers.get("content-type");
+  if (!contentType || !contentType.includes("application/json")) {
+    throw new Error("Response is not in JSON format");
+  }
+
+  const data = await response.json();
+
+            */
+            const data: WeatherData = jsonData; 
+          
             if (data.list.length != null) { 
                 setWeatherInfo(data);  
                 
@@ -1611,26 +1636,53 @@ function WeatherForecast() {
     }
 
     return (
-        <>
-        <form onSubmit={fetchData}>
-            <input ref={cityRef} className='my-10 rounded-md border-solid ring-offset-2 ring-2 border-blue-600' placeholder='City...'></input>
-            <button className='my-10 rounded-full border-solid ring-offset-2 ring-2 border-blue-600'>Show</button>
-
-            <p>Tempreture is: {weatherInfo?.list[0].main.temp}</p>
-            <p>Humidity: {weatherInfo?.list[0].main.humidity}</p>
-            <img src={`https://openweathermap.org/img/w/${weatherInfo?.list[0].weather[0].icon}.png`}  id="img-weatherIcon"></img>
-            <p>Weather: {weatherInfo?.list[0].weather[0].description}</p>
-
-            <p>cityid: {weatherInfo?.city.id}</p>
-            <p>cityname: {weatherInfo?.city.name}</p>
-            <input id="report" className='my-10 rounded-md' placeholder='Write your report...'></input>
-        </form>
-<form onSubmit={handleSave}>
-<button className='my-10 rounded-full border-solid ring-offset-2 ring-2 border-blue-600' >Save</button>
-
-</form>
-        </>
-      ) 
+        <div className="max-w-sm rounded overflow-hidden shadow-lg my-2">
+            <form onSubmit={fetchData}> 
+                <div className="flex items-start mb-2 my-2">
+                    <input ref={cityRef} 
+                        className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 m-5" 
+                        placeholder='City...'></input>
+                    </div>
+                    <button 
+                        className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-20 sm:w-2  py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Show</button>
+                   <img className='m-auto'
+                    src={`https://openweathermap.org/img/w/${weatherInfo?.list[0].weather[0].icon}.png`}  id="img-weatherIcon"></img>
+                   
+                    <p className='p-2' >
+                        <p className='font-sans'>Tempreture is:</p> 
+                        {weatherInfo?.list[0].main.temp}
+                    </p>
+                    <p className='p-2' >
+                        <p className='font-sans'>
+                            Humidity: 
+                        </p>
+                       {weatherInfo?.list[0].main.humidity}
+                    </p>
+                    <p className='p-2'>
+                        <p className='font-sans'>
+                        Weather: 
+                        </p>
+                        {weatherInfo?.list[0].weather[0].description}
+                    </p> 
+                    <p className='p-2'>
+                        <p className='font-sans'>
+                            cityname: 
+                        </p>
+                        {weatherInfo?.city.name}
+                    </p>
+                    <input id="report" multiple
+                        className="block m-5 h-100 rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm " 
+                        placeholder='Write your report...'></input>
+                
+                </form>
+                <form onSubmit={handleSave}>
+                <button 
+                        className="m-5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-20 sm:w-2  py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        >Save</button>
+            </form>
+            
+        </div>
+    ) 
 }
 
 export default WeatherForecast
