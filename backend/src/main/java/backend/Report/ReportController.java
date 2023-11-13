@@ -14,7 +14,7 @@ import java.util.UUID;
 public class ReportController {
   @GetMapping
     public ResponseEntity<String> getAll(){
-      return ResponseEntity.ok("good");
+      return ResponseEntity.ok("Bad");
   }
 
 
