@@ -30,7 +30,8 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: java-app 
-          path: './backend/${{ github.workspace }}/target/*.jar'
+          working-directory: ./backend
+          path: '${{ github.workspace }}/target/*.jar'
 
   deploy:
     runs-on: windows-latest
