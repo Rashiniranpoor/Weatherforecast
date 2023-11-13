@@ -1,10 +1,12 @@
 package backend.Report;
 
+/*
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.util.UUID;
+
 
 @Entity
 public class Report {
@@ -140,4 +142,4 @@ public class Report {
     public void setCityId(String cityId) {
         this.cityId = cityId;
     }
-}
+}*/

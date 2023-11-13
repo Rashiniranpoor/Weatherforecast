@@ -3,6 +3,7 @@ package backend.Report;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
 public class ReportConvertor {
     static ReportDto toResponseDTO(Report entity) {
         return new ReportDto(entity.getId(), entity.getTemp(),
@@ -39,3 +40,5 @@ public class ReportConvertor {
         ,entity.cityName(),entity.cityId());
     }
 }
+
+ */

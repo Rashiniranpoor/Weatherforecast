@@ -12,7 +12,15 @@ import java.util.UUID;
 @RequestMapping("api/report")
 @CrossOrigin("*")
 public class ReportController {
-    private final ReportService service;
+  @GetMapping
+    public ResponseEntity<String> getAll(){
+      return ResponseEntity.ok("good");
+  }
+
+
+        /*
+
+          private final ReportService service;
 
     public ReportController(ReportService service) {
         this.service = service;
@@ -26,6 +34,7 @@ public class ReportController {
         else
             return ResponseEntity.badRequest().build();
     }
+
 
     @GetMapping( path="/{cityId}")
     public ResponseEntity<List<ReportDto>> getReportByCity(@PathVariable String cityId) {
@@ -59,5 +68,5 @@ public class ReportController {
         service.deleteReport(reportId);
         return ResponseEntity.noContent().build();
     }
-
+*/
 }
