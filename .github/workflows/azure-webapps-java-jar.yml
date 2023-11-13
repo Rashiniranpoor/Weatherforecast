@@ -27,6 +27,20 @@ env:
 on:
   push:
     branches: [ "main" ]
+    paths:
+      - backend/**
+      - backend/**
+      - .github/workflows/azure-webapps-java-jar.yml
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    branches:
+      - main
+    paths:
+      - backend/**
+      - backend/**
+      - .github/workflows/azure-webapps-java-jar.yml
+      
+    
   workflow_dispatch:
 
 permissions:
